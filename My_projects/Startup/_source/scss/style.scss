@@ -3,7 +3,9 @@
 
 //<Шрифт по умолчанию>=================================================================================================================================================================================================
 $fontfamily: 'Arial';
-
+body {
+  color: #555555;
+}
 //<ПЕРЕМЕННЫЕ>==================================================================================================================================================================================================================
 $minwidth: 320px;
 
@@ -31,7 +33,7 @@ $minwidth: 320px;
 .container {
   max-width: 1170px;
   padding: 0px 15px;
-  margin: 0px auto;
+  margin: 100px auto 100px;
 }
 
 //<ОСНОВНОЙ БЛОК>===========================================================================================================================================================================================================
@@ -67,6 +69,11 @@ $minwidth: 320px;
 }
 
 //============================================================================================================================================================================================================================
+.header-container {
+  max-width: 1170px;
+  padding: 0px 15px;
+  margin: 0 auto;
+}
 .header {
   position: absolute;
   width: 100%;
@@ -137,7 +144,7 @@ $minwidth: 320px;
     display: inline-block;
     border: 3px solid #fff;
     font-size: 16px;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 20px 35px;
   }
 }
@@ -150,10 +157,87 @@ $minwidth: 320px;
 
 //============================================================================================================================================================================================================================
 .content {
-  font-size: 20px;
+  font-size: 14px;
 }
 
 //============================================================================================================================================================================================================================
+
+.services {
+  // .services__chapter
+  &__chapter {
+  }
+  // .services__row
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+  // .services__block
+  &__block {
+    text-align: center;
+  }
+}
+
+.chapter {
+  text-align: center;
+  margin: 0 0 70px 0;
+
+  // .chapter__title
+  &__title {
+    position: relative;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0 0 30px 0;
+    &:after {
+      position: absolute;
+      content: '';
+      width: 50px;
+      height: 1px;
+      bottom: 0;
+      left: 50%;
+      margin: 0 0 0 -25px;
+      background-color: #555555;
+    }
+  }
+
+  // .chapter__subtitle
+  &__subtitle {
+    margin: 30px 0 0 0;
+    font-size: 16px;
+  }
+}
+.item-services {
+  // .item-services__icon
+  &__icon {
+    width: 90px;
+    height: 90px;
+    border: 2px solid #dddddd;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    margin: 0 auto 30px;
+    & > img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include tr(-50%, -50%, 0);
+    }
+  }
+  // .item-services__icon-red
+  &__icon_red {
+    background-color: #c0301c;
+  }
+  // .item-services__title
+  &__title {
+    margin: 0 auto 20px;
+  }
+  // .item-services__text
+  &__text {
+    line-height: 24px;
+  }
+}
+
+//===========================================================================================================================
 
 .footer {
 }
