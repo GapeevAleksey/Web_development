@@ -75,8 +75,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ibg {
   background-repeat: no-repeat;
-  -webkit-background-size: cover;
-          background-size: cover;
+  background-size: cover;
   background-position: center;
 }
 
@@ -103,19 +102,16 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   font-size: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
 }
 
 .home-section {
   -webkit-box-flex: 1;
-  -webkit-flex: 1 0 100%;
       -ms-flex: 1 0 100%;
           flex: 1 0 100%;
   position: relative;
@@ -146,15 +142,12 @@ h1, h2, h3, h4, h5, h6 {
 .header__row {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   font-size: 0;
   -webkit-box-align: center;
-  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
@@ -169,7 +162,6 @@ h1, h2, h3, h4, h5, h6 {
 .menu__list {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   font-size: 0;
 }
@@ -214,8 +206,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   border: 3px solid #fff;
   font-size: 16px;
-  -webkit-border-radius: 3px;
-          border-radius: 3px;
+  border-radius: 3px;
   padding: 20px 35px;
 }
 
