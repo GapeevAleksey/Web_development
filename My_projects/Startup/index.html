@@ -5,6 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/chief-slider.min.css" />
+    <script defer src="js/chief-slider.min.js"></script>
+
+    <!-- --- SCRIPT.JS (Start slider) --- -->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const slider = new ChiefSlider('.slider', {
+          loop: true,
+          autoplay: false,
+          interval: 5000,
+          refresh: true,
+        });
+      });
+    </script>
+
+    <!-- --- SCRIPT.JS (Start slider) --- -->
     <title>Startup</title>
   </head>
   <body>
@@ -136,6 +153,39 @@
                   </div>
                 </div>
               </div>
+              <!-- @import "slider.html" ------------------------------------------------------------------------>
+              <div class="slider">
+                <div class="slider__container">
+                  <div class="slider__wrapper">
+                    <div class="slider__items">
+                      <div class="slider__item">
+                        <!-- Контент 1 слайда -->
+                        <img src="img/About-us/About_us_1.png" alt="" />
+                      </div>
+                      <div class="slider__item">
+                        <!-- Контент 2 слайда -->
+                        <img src="img/About-us/About_us_2.png" alt="" />
+                      </div>
+                      <div class="slider__item">
+                        <!-- Контент 3 слайда -->
+                        <img src="img/About-us/About_us_3.png" alt="" />
+                      </div>
+                      <div class="slider__item">
+                        <!-- Контент 3 слайда -->
+                        <img src="img/About-us/About_us_4.png" alt="" />
+                      </div>
+                      <div class="slider__item">
+                        <!-- Контент 3 слайда -->
+                        <img src="img/About-us/About_us_1.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Кнопки для перехода к предыдущему и следующему слайду -->
+                <a href="#" class="slider__control" data-slide="prev"></a>
+                <a href="#" class="slider__control" data-slide="next"></a>
+              </div>
+              <!-- @import "slider.html" ------------------------------------------------------------------------>
             </div>
           </section>
         </div>
