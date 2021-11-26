@@ -24,13 +24,25 @@
 .slider__item {
   flex: 0 0 25%;
   max-width: 25%;
-  padding: 0 10px;
+  padding: 0 10px 10px;
   user-select: none;
   text-align: center;
   position: relative;
 }
 .slider__item img {
   width: 100%;
+}
+
+.slider__person {
+}
+.person-info {
+}
+.person-info__name {
+  text-transform: uppercase;
+  margin: 10px 0 10px;
+}
+.person-info__profession {
+  font-size: 13px;
 }
 
 /* --- LINKS --------------------------- */
@@ -42,7 +54,7 @@
   left: 0;
   border-left: 10px solid #f7f8f7;
   border-right: 10px solid #f7f8f7;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
   transition: all 0.5s ease;
 }
@@ -53,7 +65,7 @@
 .slider__links {
   display: flex;
   position: absolute;
-  top: 77%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%);
   justify-content: space-between;

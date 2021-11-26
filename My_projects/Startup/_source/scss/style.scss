@@ -178,6 +178,7 @@ $minwidth: 320px;
   &__column {
     text-align: center;
     padding: 0 15px;
+    flex: 1 0 33.333%;
   }
 }
 
@@ -256,6 +257,7 @@ $minwidth: 320px;
   // .about-us__column
   &__column {
     padding: 0 22.5px;
+    flex: 1 0 50%;
   }
 }
 .chapter {
@@ -267,6 +269,93 @@ $minwidth: 320px;
   }
 }
 .text-about-us {
+  line-height: 24px;
+}
+
+//=== WORKS =========================================================================================================================================================================================================================
+
+.works-subtitle {
+  // .works-subtitle__links
+  &__links {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    & > li {
+      padding: 0 15px;
+      & > a {
+        color: #555555;
+        &:hover {
+          color: #c0301c;
+        }
+      }
+    }
+  }
+}
+
+.works {
+  // .works__table
+  &__table {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+  // .works__item
+  &__item {
+    padding: 15px;
+  }
+}
+.works-body {
+  position: relative;
+  // .works-body__img
+  &__img {
+  }
+  // .works-body__hover
+  &__hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(185, 18, 18, 0.5);
+    opacity: 0;
+    transition: all 0.5s ease;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  // .works-body__list
+  &__list {
+    position: absolute;
+    text-align: center;
+    color: #ffffff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  // .works-body__title
+  &__title {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+  }
+  // .works-body__subtitle
+  &__subtitle {
+    font-size: 12px;
+    margin: 0 0 15px 0;
+  }
+  // .works-body__link
+  &__link {
+    background-color: #fff;
+    padding: 13px 8px;
+
+    & > a {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #c0301c;
+      font-weight: 700;
+    }
+  }
 }
 
 //===========================================================================================================================
