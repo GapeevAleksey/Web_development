@@ -424,3 +424,55 @@ h1, h2, h3, h4, h5, h6 {
   color: #c0301c;
   font-weight: 700;
 }
+
+.middle {
+  position: relative;
+  background: url("../img/Middle/BG_middle.png") center/cover no-repeat;
+  width: 100%;
+  height: 369px;
+  /* .middle__item */
+  /* .middle__text */
+  /* .middle__button */
+}
+
+.middle__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(185, 18, 18, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.middle__item {
+  position: absolute;
+  text-align: center;
+  max-width: 460px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.middle__text {
+  font-size: 30px;
+  line-height: 44px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 0 35px 0;
+}
+
+.middle__button {
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  border: 3px solid #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 20px 35px;
+}
+
+.middle a {
+  color: #ffffff;
+}
