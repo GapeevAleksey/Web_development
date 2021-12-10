@@ -79,12 +79,14 @@ body {
   font-family: 'Comfortaa', cursive;
   color: #666;
   background-color: rgb(248, 245, 245);
+  display: flex;
 }
 
 /* ------------------------------------------------------------------------ */
 
 .dropdown {
   position: relative;
+  margin: 20px;
   left: 50px;
   top: 50px;
   width: 300px;
@@ -152,7 +154,4 @@ body {
 .dropdown.active::before {
   top: 50%;
   transform: translateY(-75%) rotate(-135deg);
-}
-
-.textbox {
 }

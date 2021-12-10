@@ -1,14 +1,17 @@
-let dropdown = document.querySelector('.dropdown'),
-  textbox = document.querySelector('.textbox'),
-  options = document.querySelector('.options');
+let dropdownFood = document.querySelector('.dropdown-food'),
+  textboxFood = document.querySelector('.dropdown-food__textbox'),
+  optionsFood = document.querySelector('.dropdown-food__options');
 
-getElementDropdownList();
+let dropdownPhone = document.querySelector('.dropdown-phone'),
+  textboxPhone = document.querySelector('.dropdown-phone__textbox'),
+  optionsPhone = document.querySelector('.dropdown-phone__options');
 
-console.log(options.children.length);
+getElementDropdownList(dropdownFood, textboxFood, optionsFood);
+getElementDropdownList(dropdownPhone, textboxPhone, optionsPhone);
 
 // --------- Получение выбранного элемента из выпадающего списка ---------------
 
-function getElementDropdownList() {
+function getElementDropdownList(dropdown, textbox, options) {
   textbox.addEventListener('click', function () {
     dropdown.classList.toggle('active');
   });
@@ -20,7 +23,7 @@ function getElementDropdownList() {
         // && textbox.value != event.target.textContent
       ) {
         textbox.value = event.target.textContent;
-        document.querySelector('.dropdown').classList.toggle('active');
+        dropdown.classList.remove('active');
         console.log(textbox.value);
       }
       // console.dir(event.target);
