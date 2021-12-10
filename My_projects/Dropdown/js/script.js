@@ -12,9 +12,12 @@ function getElementDropdownList() {
     options.children[i] = addEventListener('mousedown', function (event) {
       if (
         event.target.tagName == 'DIV' &&
-        event.target.parentNode.className == options.className
+        event.target.parentNode.className == options.className &&
+        textbox.value != event.target.textContent
       ) {
         textbox.value = event.target.textContent;
+
+        console.log(textbox.value);
       }
       // console.dir(event.target);
     });
