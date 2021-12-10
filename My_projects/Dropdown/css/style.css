@@ -137,7 +137,7 @@ body {
 
 .dropdown .options div {
   padding: 12px 20px;
-  cursor: pointer;
+  cursor: default;
 }
 
 .dropdown .options div:hover {
