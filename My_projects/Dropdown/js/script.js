@@ -20,8 +20,10 @@ function getElementDropdownList(dropdown, textbox, options) {
   // console.log(document.getElementsByClassName('dropdown'));
 
   textbox.addEventListener('click', function () {
-    dropdown.classList.toggle('active');
-
+    if (!dropdown.classList.contains('active')) {
+      console.log('true');
+      dropdown.classList.toggle('active');
+    }
     // if (document.getElementsByClassName('active').length > 1) {
     //   for (
     //     let i = 0;
