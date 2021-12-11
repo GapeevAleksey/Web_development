@@ -18,12 +18,9 @@ getElementDropdownList(dropdownCountry, textboxCountry, optionsCountry);
 
 function getElementDropdownList(dropdown, textbox, options) {
   // console.log(document.getElementsByClassName('dropdown'));
-
   textbox.addEventListener('click', function () {
-    if (!dropdown.classList.contains('active')) {
-      console.log('true');
-      dropdown.classList.toggle('active');
-    }
+    dropdown.classList.toggle('active');
+
     // if (document.getElementsByClassName('active').length > 1) {
     //   for (
     //     let i = 0;
@@ -47,10 +44,9 @@ function getElementDropdownList(dropdown, textbox, options) {
         textbox.value = event.target.textContent;
         dropdown.classList.remove('active');
         // console.log(textbox.value);
-      } else {
+      } else if (event.target.parentNode.className != dropdown.className) {
         dropdown.classList.remove('active');
       }
-      // console.dir(event.target);
     });
   }
 }
