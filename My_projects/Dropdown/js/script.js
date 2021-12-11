@@ -19,19 +19,6 @@ getElementDropdownList(dropdownCountry, textboxCountry, optionsCountry);
 function getElementDropdownList(dropdown, textbox, options) {
   textbox.addEventListener('click', function () {
     dropdown.classList.toggle('active');
-
-    // if (document.getElementsByClassName('active').length > 1) {
-    //   for (
-    //     let i = 0;
-    //     i < document.getElementsByClassName('dropdown').length;
-    //     i++
-    //   ) {
-    //     document
-    //       .getElementsByClassName('dropdown')
-    //       [i].classList.remove('active');
-    //   }
-    //   dropdown.classList.toggle('active');
-    // }
   });
   for (let i = 0; i < options.children.length; i++) {
     options.children[i] = addEventListener('mousedown', function (event) {
@@ -48,3 +35,20 @@ function getElementDropdownList(dropdown, textbox, options) {
     break;
   }
 }
+
+// ------------ Неиспользуемый код --------------
+
+// ------ Живой список "активных" классов -------
+
+// if (document.getElementsByClassName('active').length > 1) {
+//   for (
+//     let i = 0;
+//     i < document.getElementsByClassName('dropdown').length;
+//     i++
+//   ) {
+//     document
+//       .getElementsByClassName('dropdown')
+//       [i].classList.remove('active');
+//   }
+//   dropdown.classList.toggle('active');
+// }
