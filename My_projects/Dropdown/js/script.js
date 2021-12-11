@@ -17,7 +17,6 @@ getElementDropdownList(dropdownCountry, textboxCountry, optionsCountry);
 // --------- Получение выбранного элемента из выпадающего списка ---------------
 
 function getElementDropdownList(dropdown, textbox, options) {
-  // console.log(document.getElementsByClassName('dropdown'));
   textbox.addEventListener('click', function () {
     dropdown.classList.toggle('active');
 
@@ -39,14 +38,13 @@ function getElementDropdownList(dropdown, textbox, options) {
       if (
         event.target.tagName == 'DIV' &&
         event.target.parentNode.className == options.className
-        // && textbox.value != event.target.textContent
       ) {
         textbox.value = event.target.textContent;
         dropdown.classList.remove('active');
-        // console.log(textbox.value);
       } else if (event.target.parentNode.className != dropdown.className) {
         dropdown.classList.remove('active');
       }
     });
+    break;
   }
 }
