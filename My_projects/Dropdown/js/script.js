@@ -22,10 +22,7 @@ function getElementDropdownList(dropdown, textbox, options) {
   });
   for (let i = 0; i < options.children.length; i++) {
     options.children[i] = addEventListener('mousedown', function (event) {
-      if (
-        event.target.tagName == 'DIV' &&
-        event.target.parentNode.className == options.className
-      ) {
+      if (event.target.tagName == 'DIV' && event.target.parentNode.className == options.className) {
         textbox.value = event.target.textContent;
         dropdown.classList.remove('active');
       } else if (event.target.parentNode.className != dropdown.className) {
