@@ -10,9 +10,14 @@ let dropdownCountry = document.querySelector('.dropdown-country'),
   textboxCountry = document.querySelector('.dropdown-country__textbox'),
   optionsCountry = document.querySelector('.dropdown-country__options');
 
+let dropdownAnimal = document.querySelector('.dropdown-animal'),
+  textboxAnimal = document.querySelector('.dropdown-animal__textbox'),
+  optionsAnimal = document.querySelector('.dropdown-animal__options');
+
 getElementDropdownList(dropdownFood, textboxFood, optionsFood);
 getElementDropdownList(dropdownPhone, textboxPhone, optionsPhone);
 getElementDropdownList(dropdownCountry, textboxCountry, optionsCountry);
+getElementDropdownList(dropdownAnimal, textboxAnimal, optionsAnimal);
 
 // --------- Получение выбранного элемента из выпадающего списка ---------------
 
