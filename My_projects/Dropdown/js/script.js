@@ -24,17 +24,20 @@ getElementDropdownList(dropdownAnimal, textboxAnimal, optionsAnimal);
 function getElementDropdownList(dropdown, textbox, options) {
   textbox.addEventListener('click', function () {
     dropdown.classList.toggle('active');
-  });
-  addEventListener('mousedown', function (event) {
-    if (
-      event.target.tagName == 'DIV' &&
-      event.target.parentNode.className == options.className
-    ) {
-      textbox.value = event.target.textContent;
-      dropdown.classList.remove('active');
-    } else if (event.target.parentNode.className != dropdown.className) {
-      dropdown.classList.remove('active');
-    }
+    addEventListener('mousedown', function (event) {
+      if (
+        // event.target.closest(options.className)
+        event.target.tagName == 'DIV' &&
+        event.target.parentNode.className == options.className
+      ) {
+        textbox.value = event.target.textContent;
+        dropdown.classList.remove('active');
+        // console.dir(event.target);
+        // console.log(options.className);
+      } else if (event.target.parentNode.className != dropdown.className) {
+        dropdown.classList.remove('active');
+      }
+    });
   });
 
   // for (let i = 0; i < options.children.length; i++) {
