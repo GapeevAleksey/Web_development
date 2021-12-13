@@ -25,17 +25,29 @@ function getElementDropdownList(dropdown, textbox, options) {
   textbox.addEventListener('click', function () {
     dropdown.classList.toggle('active');
   });
-  for (let i = 0; i < options.children.length; i++) {
-    options.children[i] = addEventListener('mousedown', function (event) {
-      if (event.target.tagName == 'DIV' && event.target.parentNode.className == options.className) {
-        textbox.value = event.target.textContent;
-        dropdown.classList.remove('active');
-      } else if (event.target.parentNode.className != dropdown.className) {
-        dropdown.classList.remove('active');
-      }
-    });
-    break;
-  }
+  addEventListener('mousedown', function (event) {
+    if (
+      event.target.tagName == 'DIV' &&
+      event.target.parentNode.className == options.className
+    ) {
+      textbox.value = event.target.textContent;
+      dropdown.classList.remove('active');
+    } else if (event.target.parentNode.className != dropdown.className) {
+      dropdown.classList.remove('active');
+    }
+  });
+
+  // for (let i = 0; i < options.children.length; i++) {
+  //   options.children[i] = addEventListener('mousedown', function (event) {
+  //     if (event.target.tagName == 'DIV' && event.target.parentNode.className == options.className) {
+  //       textbox.value = event.target.textContent;
+  //       dropdown.classList.remove('active');
+  //     } else if (event.target.parentNode.className != dropdown.className) {
+  //       dropdown.classList.remove('active');
+  //     }
+  //   });
+  //   break;
+  // }
 }
 
 // ------------ Неиспользуемый код --------------
