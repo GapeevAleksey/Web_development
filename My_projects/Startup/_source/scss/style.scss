@@ -566,6 +566,51 @@ $minwidth: 320px;
   }
 }
 
+// ======= CONTACT =====================================================================================================
+
+.contact {
+  // .contact__body
+  &__body {
+    display: flex;
+  }
+  // .contact__info
+  &__info {
+  }
+}
+
+.block-info {
+  // .block-info__title
+  &__title {
+  }
+  // .block-info__text
+  &__text {
+  }
+}
+.block-form {
+  // .block-form__row1
+  &__row1 {
+    display: flex;
+  }
+  // .block-form__row2
+  &__row2 {
+    display: flex;
+  }
+  // .block-form__textarea
+  &__textarea {
+  }
+  // .block-form__send
+  &__send {
+  }
+  // .block-form__button
+  &__button {
+  }
+  // .block-form__note
+  &__note {
+  }
+}
+.inputs-block {
+}
+
 //===========================================================================================================================
 
 .footer {
