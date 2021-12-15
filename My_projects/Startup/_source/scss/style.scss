@@ -14,6 +14,23 @@ $minwidth: 320px;
 //<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>======================================================================================================================================================================================================
 @import 'null.scss';
 
+input,
+textarea {
+  border: 1px solid #555555;
+  padding: 11px 17px;
+  height: 42px;
+  width: 100%;
+  &:focus {
+    border: 1px solid #c0301c;
+    &::placeholder {
+      visibility: hidden;
+    }
+  }
+  &::placeholder {
+    color: #7f7f7f;
+  }
+}
+
 // <СТИЛИ IBG>=============================================================================================================================================================================================================
 .ibg {
   background-repeat: no-repeat;
@@ -572,43 +589,107 @@ $minwidth: 320px;
   // .contact__body
   &__body {
     display: flex;
+    justify-content: space-between;
   }
   // .contact__info
   &__info {
+    padding: 10px 0;
   }
 }
 
 .block-info {
+  margin: 0 0 30px 0;
   // .block-info__title
   &__title {
+    position: relative;
+    line-height: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0 0 0 30px;
+    &.address {
+      background: url('../img/Clients/Icons/Clients_icon_1.png') 0 5px no-repeat;
+    }
+    &.hotline {
+      background: url('../img/Clients/Icons/Clients_icon_2.png') 0 5px no-repeat;
+    }
+    &.email {
+      background: url('../img/Clients/Icons/Clients_icon_3.png') 0 10px
+        no-repeat;
+    }
   }
   // .block-info__text
   &__text {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 0 0 0 30px;
   }
 }
 .block-form {
+  width: 100%;
+  max-width: 730px;
+  margin: 0 -17px;
+
   // .block-form__row1
   &__row1 {
     display: flex;
+    justify-content: space-between;
+  }
+  // .block-form__name
+  &__name {
+  }
+  // .block-form__email
+  &__email {
   }
   // .block-form__row2
   &__row2 {
     display: flex;
   }
+  // .block-form__subject
+  &__subject {
+  }
+  // .block-form__company
+  &__company {
+  }
   // .block-form__textarea
   &__textarea {
+    padding: 11px 17px;
+  }
+  // .block-form__message
+  &__message {
+    min-height: 100px;
   }
   // .block-form__send
   &__send {
+    display: flex;
+    padding: 11px 17px;
+    align-items: center;
   }
   // .block-form__button
   &__button {
   }
+  // .block-form__send-message
+  &__send-message {
+    background-color: #fff;
+    text-transform: uppercase;
+    color: #555;
+  }
   // .block-form__note
   &__note {
+    padding: 0 0 0 40px;
+    & span {
+      color: #c0301c;
+    }
   }
 }
 .inputs-block {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  & div {
+    width: 100%;
+    padding: 11px 17px;
+  }
 }
 
 //===========================================================================================================================
