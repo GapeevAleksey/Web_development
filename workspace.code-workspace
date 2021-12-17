@@ -8,9 +8,12 @@
     },
     {
       "path": "..\\Start_sample"
+    },
+    {
+      "path": "..\\Dropdown"
     }
   ],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "Web_development"
+    "liveServer.settings.multiRootWorkspaceName": "Dropdown"
   }
 }
