@@ -387,6 +387,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
+	flex-wrap: wrap;
 }
 .menu .title {
 	text-align: center;
@@ -404,6 +405,7 @@ a {
 	box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
 	font-size: 16px;
 	font-weight: 300;
+	margin-bottom: 30px;
 }
 .menu__item img {
 	width: 100%;
