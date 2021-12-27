@@ -386,7 +386,7 @@ a {
 .menu .container {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	/* align-items: flex-start; */
 	flex-wrap: wrap;
 }
 .menu .title {
@@ -406,6 +406,9 @@ a {
 	font-size: 16px;
 	font-weight: 300;
 	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .menu__item img {
 	width: 100%;
@@ -421,6 +424,7 @@ a {
 .menu__item-descr {
 	margin-top: 20px;
 	padding: 0 20px;
+	height: 100%;
 }
 .menu__item-divider {
 	width: 100%;
