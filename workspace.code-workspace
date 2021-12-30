@@ -1,19 +1,22 @@
 {
-  "folders": [
-    {
-      "path": "."
-    },
-    {
-      "path": "..\\gapeevaleksey.github.io"
-    },
-    {
-      "path": "..\\Start_sample"
-    },
-    {
-      "path": "..\\Dropdown"
-    }
-  ],
-  "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "Web_development"
-  }
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\gapeevaleksey.github.io"
+		},
+		{
+			"path": "..\\Start_sample"
+		},
+		{
+			"path": "..\\Dropdown"
+		},
+		{
+			"path": "C:\\OpenServer\\domains\\FoodDist"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "FoodDist"
+	}
 }
