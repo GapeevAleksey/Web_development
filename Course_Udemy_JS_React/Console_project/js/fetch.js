@@ -2,7 +2,8 @@
 
 fetch('https://jsonplaceholder.typicode.com/posts', {
 	method: 'POST',
-	body: JSON.stringify({ name: 'Alexei' }),
+	body: JSON.stringify({ name: 'Alexei', surname: 'Gapeev' }),
+
 	headers: {
 		'Content-type': 'application/json',
 	},
