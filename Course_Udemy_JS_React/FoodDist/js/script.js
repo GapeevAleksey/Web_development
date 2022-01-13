@@ -204,10 +204,21 @@ window.addEventListener('DOMContentLoaded', () => {
 	};
 
 	forms.forEach((item) => {
-		postData(item);
+		bindPostData(item);
 	});
 
-	function postData(form) {
+	const postData = async (url, data) => {
+		const resultPostData = fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: data,
+		});
+		resultPostData.json();
+	};
+
+	function bindPostData(form) {
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
 
@@ -279,5 +290,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			closeModal();
 		}, 3000);
 	}
+
+	fetch('http://localhost:3000/menu')
+		.then((data) => data.json())
+		.then((result) => console.log(result));
 	// ============================================================================
 });

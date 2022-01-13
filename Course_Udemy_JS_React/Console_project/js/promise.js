@@ -91,8 +91,7 @@
 // 		console.log('dataError');
 // 	});
 
-const prom1 = (ms) => new Promise((r) => setTimeout(() => r(), ms));
-
+// const prom1 = (ms) => new Promise((r) => setTimeout(() => r(), ms));
 // const prom1 = (ms) => {
 // 	return new Promise((resolve) => {
 // 		setTimeout(() => {
@@ -105,4 +104,4 @@ const prom1 = (ms) => new Promise((r) => setTimeout(() => r(), ms));
 // prom1(2000).then(() => console.log('2 ces'));
 // prom1(3000).then(() => console.log('3 ces'));
 
-Promise.all([prom1(1000), prom1(2000), prom1(3000)]).then(() => console.log('Sucsess'));
+// Promise.all([prom1(1000), prom1(2000), prom1(3000)]).then(() => console.log('Sucsess'));
