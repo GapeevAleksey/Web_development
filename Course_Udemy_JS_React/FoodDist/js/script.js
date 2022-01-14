@@ -138,7 +138,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// const menu = document.querySelector('.menu__field .container');
 	// menu.innerHTML = '';
 
-	// === Класс для создание элемента меню ================
+	// === КЛАСС ДЛЯ СОЗДАНИЯ КАРТОЧЕК ТОВАРОВ ================
 	class MenuItem {
 		constructor(parentSelector, img, title, text, price, ...classes) {
 			this.parentNode = document.querySelector(parentSelector);
@@ -164,38 +164,78 @@ window.addEventListener('DOMContentLoaded', () => {
 			</div>`;
 		}
 	}
-	// ============================================================================
-	new MenuItem(
-		'.menu__field .container',
-		'img/tabs/vegy.jpg',
-		'Меню "Фитнес"',
-		`Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов.
-		Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и
-		высоким качеством!`,
-		229,
-		'menu__item'
-	).createMenuItem();
-	new MenuItem(
-		'.menu__field .container',
-		'img/tabs/elite.jpg',
-		'Меню "Премиум"',
-		`В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.
-		 Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis
-		 praesentium dolorem voluptates nihil laudantium consequuntur, cupiditate consequatur.
-		 Pariatur fugit totam cumque ea necessitatibus.`,
-		550,
-		'menu__item'
-	).createMenuItem();
-	new MenuItem(
-		'.menu__field .container',
-		'img/tabs/post.jpg',
-		'Меню "Постное"',
-		`Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,
-		 молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
-		430,
-		'menu__item'
-	).createMenuItem();
-	//=== FORMS ============================================================================
+
+	// === СОЗДАНИЕ КАРТОЧЕК ТОВАРОВ =========================================================================
+
+	const getResource = async (url) => {
+		const resultGetData = await fetch(url);
+
+		if (!resultGetData.ok) {
+			throw new Error(`Ошибка запроса. Код: ${resultGetData.status}`);
+		}
+
+		return await resultGetData.json();
+	};
+
+	axios.get('http://localhost:3000/menu').then((response) => {
+		response.data.forEach(({ img, title, descr, price }) => {
+			new MenuItem(
+				'.menu__field .container',
+				img,
+				title,
+				descr,
+				price,
+				'menu__item'
+			).createMenuItem();
+		});
+	});
+
+	// getResource('http://localhost:3000/menu').then((data) => {
+	// 	data.forEach(({ img, title, descr, price }) => {
+	// 		new MenuItem(
+	// 			'.menu__field .container',
+	// 			img,
+	// 			title,
+	// 			descr,
+	// 			price,
+	// 			'menu__item'
+	// 		).createMenuItem();
+	// 	});
+	// });
+
+	// new MenuItem(
+	// 	'.menu__field .container',
+	// 	'img/tabs/vegy.jpg',
+	// 	'Меню "Фитнес"',
+	// 	`Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов.
+	// 	Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и
+	// 	высоким качеством!`,
+	// 	229,
+	// 	'menu__item'
+	// ).createMenuItem();
+	// new MenuItem(
+	// 	'.menu__field .container',
+	// 	'img/tabs/elite.jpg',
+	// 	'Меню "Премиум"',
+	// 	`В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд.
+	// 	 Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis
+	// 	 praesentium dolorem voluptates nihil laudantium consequuntur, cupiditate consequatur.
+	// 	 Pariatur fugit totam cumque ea necessitatibus.`,
+	// 	550,
+	// 	'menu__item'
+	// ).createMenuItem();
+	// new MenuItem(
+	// 	'.menu__field .container',
+	// 	'img/tabs/post.jpg',
+	// 	'Меню "Постное"',
+	// 	`Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения,
+	// 	 молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.`,
+	// 	430,
+	// 	'menu__item'
+	// ).createMenuItem();
+
+	//=== ФОРМА ДЛЯ ОТПРАВКИ ДАННЫХ ============================================================================
+
 	const forms = document.querySelectorAll('form');
 	const message = {
 		loading: 'Loading',
@@ -207,16 +247,20 @@ window.addEventListener('DOMContentLoaded', () => {
 		bindPostData(item);
 	});
 
+	//=== ФУНКЦИЯ ДЛЯ ОТПРАВКИ ФОРМЫ ============================================================================
+
 	const postData = async (url, data) => {
-		const resultPostData = fetch(url, {
+		const resultPostData = await fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-type': 'application/json',
 			},
 			body: data,
 		});
-		resultPostData.json();
+		return await resultPostData.json();
 	};
+
+	//=== ОТПРАВКА ФОРМЫ ============================================================================
 
 	function bindPostData(form) {
 		form.addEventListener('submit', (e) => {
@@ -231,19 +275,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			const formData = new FormData(form);
 
-			const object = {};
-			formData.forEach((item, key) => {
-				object[key] = item;
-			});
+			const object = JSON.stringify(Object.fromEntries(formData.entries()));
 
-			fetch('server.php', {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify(object),
-			})
-				.then((data) => data.text())
+			// const object = {};
+			// formData.forEach((item, key) => {
+			// 	object[key] = item;
+			// });
+			// console.log(object);
+
+			postData('http://localhost:3000/requests', object)
 				.then((data) => {
 					console.log(data);
 					showThanksModal(message.success);
@@ -270,6 +310,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	//=== ПОКАЗ МОДАЛЬНОГО ОКНА ============================================================================
+
 	function showThanksModal(message) {
 		const prevModalDialog = document.querySelector('.modal__dialog');
 		prevModalDialog.classList.add('hide');
@@ -291,8 +333,42 @@ window.addEventListener('DOMContentLoaded', () => {
 		}, 3000);
 	}
 
-	fetch('http://localhost:3000/menu')
-		.then((data) => data.json())
-		.then((result) => console.log(result));
+	//=== СЛАЙДЕР ============================================================================
+
+	const sliderPrev = document.querySelector('.offer__slider-prev');
+	const sliderNext = document.querySelector('.offer__slider-next');
+	const currentSlide = document.getElementById('current');
+	const totalSlides = document.getElementById('total');
+	const AllSlides = document.querySelectorAll('.offer__slide');
+
+	let numberOfSlide = 1;
+	currentSlide.innerText = '01';
+	// offerSlide.forEach((item, index) => {
+	// 	console.log(item, index);
+
+	// 	if (index + 1 < 10) {
+	// 		totalSlides.innerText = `0${index + 1}`;
+	// 	} else {
+	// 		totalSlides.innerText = index + 1;
+	// 	}
+	// });
+	console.log(AllSlides.length);
+	if (AllSlides.length < 10) {
+		totalSlides.innerText = `0${AllSlides.length}`;
+	} else {
+		totalSlides.innerText = AllSlides.length;
+	}
+
+	sliderPrev.addEventListener('click', (e) => {});
+	sliderNext.addEventListener('click', (e) => {
+		if (numberOfSlide < 10) {
+			currentSlide.innerText = `0${numberOfSlide++}`;
+		} else {
+			currentSlide.innerText = numberOfSlide++;
+		}
+	});
+
+	function showSlide() {}
+
 	// ============================================================================
 });
