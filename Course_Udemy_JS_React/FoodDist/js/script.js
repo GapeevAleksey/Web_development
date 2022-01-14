@@ -358,14 +358,37 @@ window.addEventListener('DOMContentLoaded', () => {
 	} else {
 		totalSlides.innerText = AllSlides.length;
 	}
-
-	sliderPrev.addEventListener('click', (e) => {});
-	sliderNext.addEventListener('click', (e) => {
-		if (numberOfSlide < 10) {
-			currentSlide.innerText = `0${numberOfSlide++}`;
+	AllSlides.forEach((item, index) => {
+		if (index == 0) {
+			item.classList.add('show');
 		} else {
-			currentSlide.innerText = numberOfSlide++;
+			item.classList.add('hide');
 		}
+	});
+
+	sliderPrev.addEventListener('click', (e) => {
+		numberOfSlide--;
+		if (numberOfSlide < 10) {
+			currentSlide.innerText = `0${numberOfSlide}`;
+		} else {
+			currentSlide.innerText = numberOfSlide;
+		}
+		AllSlides[numberOfSlide].classList.add('hide');
+		AllSlides[numberOfSlide].classList.remove('show');
+		AllSlides[numberOfSlide - 1].classList.add('show');
+		AllSlides[numberOfSlide - 1].classList.remove('hide');
+	});
+	sliderNext.addEventListener('click', (e) => {
+		numberOfSlide++;
+		if (numberOfSlide < 10) {
+			currentSlide.innerText = `0${numberOfSlide}`;
+		} else {
+			currentSlide.innerText = numberOfSlide;
+		}
+		AllSlides[numberOfSlide - 2].classList.add('hide');
+		AllSlides[numberOfSlide - 2].classList.remove('show');
+		AllSlides[numberOfSlide - 1].classList.add('show');
+		AllSlides[numberOfSlide - 1].classList.remove('hide');
 	});
 
 	function showSlide() {}
