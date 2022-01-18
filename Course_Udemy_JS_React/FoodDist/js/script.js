@@ -336,6 +336,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	//=== СЛАЙДЕР ============================================================================
 
 	const sliderPrev = document.querySelector('.offer__slider-prev'),
+		slider = document.querySelector('.offer__slider'),
 		sliderNext = document.querySelector('.offer__slider-next'),
 		currentSlide = document.querySelector('#current'),
 		totalSlides = document.querySelector('#total'),
@@ -364,6 +365,25 @@ window.addEventListener('DOMContentLoaded', () => {
 		slide.style.width = width;
 	});
 
+	slider.style.position = 'relative';
+
+	const indicators = document.createElement('ol'),
+		dots = [];
+
+	indicators.classList.add('carousel-indicators');
+	slider.append(indicators);
+
+	for (let i = 0; i < allSlides.length; i++) {
+		const dot = document.createElement('li');
+		dot.setAttribute('data-slide-to', i + 1);
+		dot.classList.add('dot');
+		if (i == 0) {
+			dot.style.opacity = 1;
+		}
+		indicators.append(dot);
+		dots.push(dot);
+	}
+
 	sliderNext.addEventListener('click', (e) => {
 		if (offset == +width.slice(0, width.length - 2) * (allSlides.length - 1)) {
 			offset = 0;
@@ -382,6 +402,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		} else {
 			currentSlide.innerText = numberOfSlide + 1;
 		}
+
+		dots.forEach((dot) => {
+			dot.style.opacity = '0.5';
+			dots[numberOfSlide].style.opacity = 1;
+		});
 	});
 
 	sliderPrev.addEventListener('click', (e) => {
@@ -402,6 +427,31 @@ window.addEventListener('DOMContentLoaded', () => {
 		} else {
 			currentSlide.innerText = numberOfSlide + 1;
 		}
+
+		dots.forEach((dot) => {
+			dot.style.opacity = '0.5';
+			dots[numberOfSlide].style.opacity = 1;
+		});
+	});
+
+	dots.forEach((dot) => {
+		dot.addEventListener('click', (e) => {
+			const slideTo = e.target.getAttribute('data-slide-to');
+			numberOfSlide = slideTo - 1;
+			offset = +width.slice(0, width.length - 2) * (slideTo - 1);
+			slidesField.style.transform = `translateX(-${offset}px)`;
+
+			if (numberOfSlide + 1 < 10) {
+				currentSlide.innerText = `0${numberOfSlide + 1}`;
+			} else {
+				currentSlide.innerText = numberOfSlide + 1;
+			}
+
+			dots.forEach((dot) => {
+				dot.style.opacity = '0.5';
+				dots[numberOfSlide].style.opacity = 1;
+			});
+		});
 	});
 
 	// if (allSlides.length < 10) {
