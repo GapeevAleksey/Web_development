@@ -518,11 +518,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		ratioPersone = localStorage.setItem('ratio', 1.375);
 	}
 
-	initLocalSettings('#gender', 'calculating__choose-item_active');
-	initLocalSettings('.calculating__choose_big', 'calculating__choose-item_active');
-
-	function initLocalSettings(parentSelector, activeClass) {
-		const elements = document.querySelectorAll(`${parentSelector} div`);
+	function initLocalSettings(selector, activeClass) {
+		const elements = document.querySelectorAll(selector);
 
 		elements.forEach((elem) => {
 			elem.classList.remove(activeClass);
@@ -538,6 +535,9 @@ window.addEventListener('DOMContentLoaded', () => {
 				elem.classList.add(activeClass);
 			}
 		});
+
+		initLocalSettings('#gender div', 'calculating__choose-item_active');
+		initLocalSettings('.calculating__choose_big div', 'calculating__choose-item_active');
 
 		// if (e.target.getAttribute('data-ratio')) {
 		// 	ratioPersone = +e.target.getAttribute('data-ratio');
