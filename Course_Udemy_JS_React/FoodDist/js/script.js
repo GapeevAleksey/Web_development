@@ -1,4 +1,5 @@
 'use strict';
+require('es6-promise').polyfill();
 
 import calc from './modules/calc';
 import cards from './modules/cards';
