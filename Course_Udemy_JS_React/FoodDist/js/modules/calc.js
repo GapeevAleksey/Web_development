@@ -37,9 +37,6 @@ function calc() {
 			}
 		});
 
-		initLocalSettings('#gender div', 'calculating__choose-item_active');
-		initLocalSettings('.calculating__choose_big div', 'calculating__choose-item_active');
-
 		// if (e.target.getAttribute('data-ratio')) {
 		// 	ratioPersone = +e.target.getAttribute('data-ratio');
 		// 	localStorage.setItem('ratio', +e.target.getAttribute('data-ratio'));
@@ -55,6 +52,9 @@ function calc() {
 		// e.target.classList.add(activeClass);
 		// calcTotal();
 	}
+
+	initLocalSettings('#gender div', 'calculating__choose-item_active');
+	initLocalSettings('.calculating__choose_big div', 'calculating__choose-item_active');
 
 	function calcTotal() {
 		if (!sexPersone || !heightPersone || !weightPersone || !agePersone || !ratioPersone) {
@@ -144,4 +144,4 @@ function calc() {
 	getDynamicInfo('#weight');
 	getDynamicInfo('#age');
 }
-module.exports = calc;
+export default calc;

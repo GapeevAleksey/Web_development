@@ -1,7 +1,10 @@
-function forms() {
+import { openModal, closeModal } from './modal';
+import { postData } from '../services/services';
+
+function forms(formSelector, modalTimerId) {
 	//=== ФОРМА ДЛЯ ОТПРАВКИ ДАННЫХ ============================================================================
 
-	const forms = document.querySelectorAll('form');
+	const forms = document.querySelectorAll(formSelector);
 	const message = {
 		loading: 'Loading',
 		success: 'Ok!',
@@ -11,19 +14,6 @@ function forms() {
 	forms.forEach((item) => {
 		bindPostData(item);
 	});
-
-	//=== ФУНКЦИЯ ДЛЯ ОТПРАВКИ ФОРМЫ ============================================================================
-
-	const postData = async (url, data) => {
-		const resultPostData = await fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-type': 'application/json',
-			},
-			body: data,
-		});
-		return await resultPostData.json();
-	};
 
 	//=== ОТПРАВКА ФОРМЫ ============================================================================
 
@@ -74,6 +64,27 @@ function forms() {
 			// });
 		});
 	}
+
+	function showThanksModal(message) {
+		const prevModalDialog = document.querySelector('.modal__dialog');
+		prevModalDialog.classList.add('hide');
+		openModal('.modal', modalTimerId);
+		const thanksModal = document.createElement('div');
+		thanksModal.classList.add('modal__dialog');
+		thanksModal.innerHTML = `
+			<div class = 'modal__content'>
+				<div data-close="" class="modal__close">×</div>
+				<div class="modal__title">${message}</div>
+			</div>`;
+		document.querySelector('.modal').append(thanksModal);
+
+		setTimeout(() => {
+			thanksModal.remove();
+			prevModalDialog.classList.add('show');
+			prevModalDialog.classList.remove('hide');
+			closeModal('.modal');
+		}, 3000);
+	}
 }
 
-module.exports = forms;
+export default forms;

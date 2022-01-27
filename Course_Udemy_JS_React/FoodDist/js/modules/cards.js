@@ -1,3 +1,5 @@
+import { getResource } from '../services/services';
+
 function cards() {
 	// === КЛАСС ДЛЯ СОЗДАНИЯ КАРТОЧЕК ТОВАРОВ ================
 	class MenuItem {
@@ -28,31 +30,8 @@ function cards() {
 
 	// === СОЗДАНИЕ КАРТОЧЕК ТОВАРОВ =========================================================================
 
-	const getResource = async (url) => {
-		const resultGetData = await fetch(url);
-
-		if (!resultGetData.ok) {
-			throw new Error(`Ошибка запроса. Код: ${resultGetData.status}`);
-		}
-
-		return await resultGetData.json();
-	};
-
-	axios.get('http://localhost:3000/menu').then((response) => {
-		response.data.forEach(({ img, title, descr, price }) => {
-			new MenuItem(
-				'.menu__field .container',
-				img,
-				title,
-				descr,
-				price,
-				'menu__item'
-			).createMenuItem();
-		});
-	});
-
-	// getResource('http://localhost:3000/menu').then((data) => {
-	// 	data.forEach(({ img, title, descr, price }) => {
+	// axios.get('http://localhost:3000/menu').then((response) => {
+	// 	response.data.forEach(({ img, title, descr, price }) => {
 	// 		new MenuItem(
 	// 			'.menu__field .container',
 	// 			img,
@@ -63,6 +42,19 @@ function cards() {
 	// 		).createMenuItem();
 	// 	});
 	// });
+
+	getResource('http://localhost:3000/menu').then((data) => {
+		data.forEach(({ img, title, descr, price }) => {
+			new MenuItem(
+				'.menu__field .container',
+				img,
+				title,
+				descr,
+				price,
+				'menu__item'
+			).createMenuItem();
+		});
+	});
 
 	// new MenuItem(
 	// 	'.menu__field .container',
@@ -96,4 +88,4 @@ function cards() {
 	// ).createMenuItem();
 }
 
-module.exports = cards;
+export default cards;

@@ -1,8 +1,7 @@
-function timer() {
+function timer(id, deadline) {
 	//=== Timer ===============
 
-	const deadline = '2022-03-01';
-	setClock('.timer', deadline);
+	setClock(id, deadline);
 
 	function setClock(selector, endtime) {
 		const timer = document.querySelector(selector),
@@ -48,4 +47,4 @@ function timer() {
 		}
 	}
 }
-module.exports = timer;
+export default timer;
