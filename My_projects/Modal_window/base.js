@@ -24,3 +24,24 @@ const options = {
 		},
 	],
 };
+
+const fruits = [
+	{
+		id: 1,
+		title: 'Apples',
+		price: 20,
+		img: 'https://kids-flashcards.com/images/ru/8/large/picture-flashcard/яблоко.jpg',
+	},
+	{
+		id: 2,
+		title: 'Oranges',
+		price: 30,
+		img: 'https://kids-flashcards.com/images/ru/8/large/picture-flashcard/апельсин.jpg',
+	},
+	{
+		id: 3,
+		title: 'Mango',
+		price: 40,
+		img: 'https://kids-flashcards.com/images/ru/8/large/picture-flashcard/манго.jpg',
+	},
+];

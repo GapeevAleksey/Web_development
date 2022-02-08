@@ -73,3 +73,8 @@
 	padding: 5px 10px;
 	border-top: 1px solid #ccc;
 }
+
+.cards-fruits {
+	display: flex;
+	justify-content: space-between;
+}
