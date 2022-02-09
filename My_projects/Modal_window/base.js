@@ -25,7 +25,7 @@ const options = {
 	],
 };
 
-const fruits = [
+let fruits = [
 	{
 		id: 1,
 		title: 'Яблоки',

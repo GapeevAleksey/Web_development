@@ -35,7 +35,7 @@ function _createModal(options) {
          ${options.closable ? `<span class="modal-close">&times</span>` : ''}
         </div>
        <div class="modal-body" data-content>
-         ${options.price || ''}
+         ${options.content || ''}
         </div>
       </div>
     </div>`
@@ -66,6 +66,9 @@ $.modal = function (options) {
 			setTimeout(() => {
 				$modal.classList.remove('hide');
 				closing = false;
+				if (typeof options.onClose === 'function') {
+					options.onClose();
+				}
 			}, ANIMATION_SPEED);
 		},
 	};
@@ -87,7 +90,6 @@ $.modal = function (options) {
 			$modal.removeEventListener('click', listener);
 		},
 		setContent(data) {
-			console.log($modal);
 			$modal.querySelector('[data-content]').innerHTML = data;
 		},
 	});
