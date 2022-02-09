@@ -28,19 +28,19 @@ const options = {
 const fruits = [
 	{
 		id: 1,
-		title: 'Apples',
+		title: 'Яблоки',
 		price: 20,
 		img: 'https://kids-flashcards.com/images/ru/8/large/picture-flashcard/яблоко.jpg',
 	},
 	{
 		id: 2,
-		title: 'Oranges',
+		title: 'Апельсины',
 		price: 30,
 		img: 'https://kids-flashcards.com/images/ru/8/large/picture-flashcard/апельсин.jpg',
 	},
 	{
 		id: 3,
-		title: 'Mango',
+		title: 'Манго',
 		price: 40,
 		img: 'https://kids-flashcards.com/images/ru/8/large/picture-flashcard/манго.jpg',
 	},

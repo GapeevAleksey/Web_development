@@ -35,7 +35,7 @@ function _createModal(options) {
          ${options.closable ? `<span class="modal-close">&times</span>` : ''}
         </div>
        <div class="modal-body" data-content>
-         ${options.content || ''}
+         ${options.price || ''}
         </div>
       </div>
     </div>`
