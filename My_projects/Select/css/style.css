@@ -1,0 +1,19 @@
+.app {
+  padding: 5rem 0 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrap {
+  width: 600px;
+}
+
+.select__input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 46px;
+}
