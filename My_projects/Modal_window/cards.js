@@ -4,7 +4,8 @@ function createCards(options) {
 	card.classList.add('cards-fruits');
 	options.forEach((cardOptions) => {
 		const cardElement = document.createElement('div');
-		cardElement.classList.add('card');
+		cardElement.classList.add(`card`);
+		cardElement.classList.add(`${cardOptions.title}`);
 		cardElement.style.width = '18rem';
 		cardElement.innerHTML = `<img src=${cardOptions.img} />
     <div class="card-body">
@@ -30,9 +31,11 @@ function createCards(options) {
 					content: `<h5>Вы удаляете фрукт: <b>${cardOptions.title}</b></h5>`,
 				})
 					.then(() => {
-						console.log('Удалить', cardOptions.id - 1);
+						document.querySelector(`.${cardOptions.title}`).outerHTML = '';
+						// fruits[cardOptions.id - 1] = '';
 						fruits = fruits.filter((fruit) => {
-							fruit.id !== cardOptions.id - 1;
+							// console.log(fruit, fruit.title, cardOptions.title);
+							return fruit.title != cardOptions.title;
 						});
 						console.log(fruits);
 					})
