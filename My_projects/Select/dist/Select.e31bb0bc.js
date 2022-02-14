@@ -125,17 +125,142 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Select = void 0;
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classPrivateMethodInitSpec(obj, privateSet) { _checkPrivateRedeclaration(obj, privateSet); privateSet.add(obj); }
 
-var Select = /*#__PURE__*/_createClass(function Select() {
-  _classCallCheck(this, Select);
-});
+function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
+
+function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
+
+var getTemplate = function getTemplate() {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var placeholder = arguments.length > 1 ? arguments[1] : undefined;
+  var selectedId = arguments.length > 2 ? arguments[2] : undefined;
+  var defaultPlaceholder = placeholder || 'Choose ...';
+  var items = data.map(function (item) {
+    var cls = '';
+
+    if (item.id === selectedId) {
+      defaultPlaceholder = item.value;
+      cls = 'selected';
+    }
+
+    return "<li class=\"select__item ".concat(cls, "\" data-type=\"item\" data-id=\"").concat(item.id, "\">").concat(item.value, "</li>");
+  });
+  return "\n  <div class=\"select__backdrop\" data-type=\"backdrop\"></div>\n        <div class=\"select__input\" data-type=\"input\">\n          <span data-type=\"value\">".concat(defaultPlaceholder, "</span>\n         <i class=\"fa fa-caret-down\" aria-hidden=\"true\" data-type=\"arrow\"></i>\n        </div>\n        <div class=\"select__dropdown\">\n         <ul class=\"select__list\">\n           ").concat(items.join(''), "\n         </ul>\n        </div>");
+};
+
+var _render = /*#__PURE__*/new WeakSet();
+
+var _setup = /*#__PURE__*/new WeakSet();
+
+var Select = /*#__PURE__*/function () {
+  function Select(selector, options) {
+    _classCallCheck(this, Select);
+
+    _classPrivateMethodInitSpec(this, _setup);
+
+    _classPrivateMethodInitSpec(this, _render);
+
+    this.$el = document.querySelector(selector);
+    this.options = options;
+    this.selectedId = options.selectedId;
+
+    _classPrivateMethodGet(this, _render, _render2).call(this);
+
+    _classPrivateMethodGet(this, _setup, _setup2).call(this);
+  }
+
+  _createClass(Select, [{
+    key: "clickHandler",
+    value: function clickHandler(event) {
+      var type = event.target.dataset.type;
+
+      if (type === 'input') {
+        this.toggle();
+      } else if (type === 'item') {
+        var id = event.target.dataset.id;
+        this.select(id);
+      } else if (type === 'backdrop') {
+        this.close();
+      }
+    }
+  }, {
+    key: "isOpen",
+    get: function get() {
+      return this.$el.classList.contains('open');
+    }
+  }, {
+    key: "current",
+    get: function get() {
+      var _this = this;
+
+      return this.options.data.find(function (item) {
+        return item.id === _this.selectedId;
+      });
+    }
+  }, {
+    key: "select",
+    value: function select(id) {
+      this.selectedId = +id;
+      this.$value.textContent = this.current.value;
+      this.$el.querySelectorAll("[data-type=\"item\"]").forEach(function (item) {
+        item.classList.remove('selected');
+      });
+      this.$el.querySelector("[data-id=\"".concat(id, "\"]")).classList.add('selected');
+      this.options.onSelect ? this.options.onSelect(this.current) : null;
+      this.close();
+    }
+  }, {
+    key: "toggle",
+    value: function toggle() {
+      this.isOpen ? this.close() : this.open();
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      this.$el.classList.add('open');
+      this.$arrow.classList.remove('fa-caret-down');
+      this.$arrow.classList.add('fa-caret-up');
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      this.$el.classList.remove('open');
+      this.$arrow.classList.remove('fa-caret-up');
+      this.$arrow.classList.add('fa-caret-down');
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      this.$el.removeEventListener('click', this.clickHandler);
+    }
+  }]);
+
+  return Select;
+}();
 
 exports.Select = Select;
+
+function _render2() {
+  var _this$options = this.options,
+      placeholder = _this$options.placeholder,
+      data = _this$options.data;
+  this.$el.classList.add('select');
+  this.$el.innerHTML = getTemplate(data, placeholder, this.selectedId);
+}
+
+function _setup2() {
+  this.clickHandler = this.clickHandler.bind(this);
+  this.$el.addEventListener('click', this.clickHandler);
+  this.$arrow = this.$el.querySelector('[data-type="arrow"]');
+  this.$value = this.$el.querySelector('[data-type="value"]');
+}
 },{}],"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -215,7 +340,30 @@ var _select = require("./select_js/select");
 
 require("./select_js/style.scss");
 
-var select = new _select.Select();
+var select = new _select.Select('#select', {
+  placeholder: 'Choose your pet',
+  // selectedId: 2,
+  data: [{
+    id: 1,
+    value: 'Cat'
+  }, {
+    id: 2,
+    value: 'Dog'
+  }, {
+    id: 3,
+    value: 'Duck'
+  }, {
+    id: 4,
+    value: 'Rabbit'
+  }, {
+    id: 5,
+    value: 'Mouse'
+  }],
+  onSelect: function onSelect(item) {
+    console.log('Selected item:', item);
+  }
+});
+window.s = select;
 },{"./select_js/select":"select_js/select.js","./select_js/style.scss":"select_js/style.scss"}],"C:/Users/Admin/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -244,7 +392,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50272" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64680" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
