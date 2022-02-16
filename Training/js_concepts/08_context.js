@@ -1,13 +1,13 @@
-// const personOne = {
-// 	surname: 'Jager',
-// 	knows(name) {
-// 		console.log(`What do you know about ${name} ${this.surname}`);
-// 	},
-// };
+const personOne = {
+	surname: 'Jager',
+	knows(name) {
+		console.log(`What do you know about ${name} ${this.surname}`);
+	},
+};
 
-// const personTwo = {
-// 	surname: 'Travolta',
-// };
+const personTwo = {
+	surname: 'Travolta',
+};
 // personOne.knows('Mick');
 // personOne.knows.call(personTwo, 'John'); // принимает список параметров
 // personOne.knows.apply(personTwo, ['John']); // принимает массив параметров
@@ -45,14 +45,48 @@
 
 // == Стрелочные функции ==============
 
-function Cat(color) {
-	this.color = color;
-	(() => {
-		console.log('context: ', this);
-	})();
-	function showThis() {
-		console.log('showContext: ', this);
-	}
-	showThis();
-}
-new Cat('Black');
+// function Cat(color) {
+// 	this.color = color;
+// 	(() => {
+// 		console.log('context: ', this);
+// 	})();
+// 	function showThis() {
+// 		console.log('showContext: ', this);
+// 	}
+// 	showThis();
+// }
+// new Cat('Black');
+
+// ------------------------------------------------
+
+// var numbers = {
+// 	numberA: 5,
+// 	numberB: 10,
+// 	sum: function () {
+// 		console.log(this === numbers); // => true
+// 		function calculate(a, b) {
+// 			return a + b;
+// 		}
+// 		console.log(calculate.call(this, this.numberA, this.numberB));
+// 	},
+// };
+// numbers.sum();
+
+// var obj = {};
+// obj.myFunction = function () {
+// 	return new Date().toJSON();
+// };
+// console.log(obj.myFunction());
+
+// function Animal(type, legs) {
+// 	this.type = type;
+// 	this.legs = legs;
+// 	this.logInfo = function () {
+// 		console.log(this === myCat); // => false
+// 		console.log('The ' + this.type + ' has ' + this.legs + ' legs');
+// 	};
+// }
+// var myCat = new Animal('Cat', 4);
+// // logs "The undefined has undefined legs"
+// // or throws a TypeError, in strict mode
+// setTimeout(myCat.logInfo.bind(myCat), 1000);

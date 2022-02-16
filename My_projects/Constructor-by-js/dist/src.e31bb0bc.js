@@ -119,70 +119,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"assets/image.png":[function(require,module,exports) {
 module.exports = "/image.90ac9039.png";
-},{}],"model.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.model = void 0;
-
-var _image = _interopRequireDefault(require("./assets/image.png"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var text = "\n\u041A\u0440\u0443\u0442\u044B\u0435 \u0432\u0438\u0434\u0435\u043E \u0438 \u0443\u0440\u043E\u043A\u0438 \u043F\u043E JavaScript \u0442\u0443\u0442: <a href=\"https://youtube.com/c/VladilenMinin\" target=\"_blank\">\u0412\u043B\u0430\u0434\u0438\u043B\u0435\u043D \u041C\u0438\u043D\u0438\u043D</a>. \u0422\u0443\u0442 \u0442\u044B \u043D\u0430\u0439\u0434\u0435\u0448\u044C \u0438\u0441\u0447\u0435\u0440\u043F\u044B\u0432\u0430\u044E\u0449\u0443\u044E \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043F\u043E \u043B\u044E\u0431\u044B\u043C \u0430\u0441\u043F\u0435\u043A\u0442\u0430\u043C \u044F\u0437\u044B\u043A\u0430, \u043B\u044E\u0431\u044B\u043C \u0444\u0440\u0435\u0439\u043C\u0432\u043E\u0440\u043A\u0430\u043C, \u0442\u0430\u043A\u0438\u0435 \u043A\u0430\u043A: React, Vue, Angular, Node, Svelte, Express, Next, Nuxt \u0438 \u043C\u043D\u043E\u0433\u043E\u0435 \u0434\u0440\u0443\u0433\u043E\u0435. \u041F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u044F\u0439\u0441\u044F!\n";
-var model = [{
-  type: 'title',
-  value: 'Конструктор сайтов на JavaScript',
-  options: {
-    tag: 'h3',
-    styles: {
-      'background-color': '#4d4959',
-      color: '#fff',
-      'text-align': 'center',
-      padding: '1rem'
-    }
-  }
-}, {
-  type: 'image',
-  value: _image.default,
-  options: {
-    styles: {
-      padding: '2rem 0',
-      display: 'flex',
-      'justify-content': 'center' // margin: '0 auto',
-
-    },
-    imageStyles: {
-      width: '300px',
-      height: 'auto'
-    }
-  }
-}, {
-  type: 'text',
-  value: text,
-  options: {
-    styles: {
-      background: 'linear-gradient(to left, #f2994a, #f2c94c)',
-      padding: '1rem',
-      'font-weight': 'bold'
-    }
-  }
-}, {
-  type: 'columns',
-  value: ['Приложение на чистом JavaScript, без использования библиотек', 'Узнаешь как работают принципы SOLID и ООП в JavaScript за один курс', 'JavaScript - это просто, интересно. Научись создавать любые UI своими руками'],
-  options: {
-    styles: {
-      background: 'linear-gradient(to bottom, #8e2de2, #4a00e0)',
-      padding: '2rem',
-      color: '#fff',
-      'font-weight': 'bold'
-    }
-  }
-}];
-exports.model = model;
-},{"./assets/image.png":"assets/image.png"}],"utils.js":[function(require,module,exports) {
+},{}],"utils.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -215,48 +152,205 @@ function css() {
 
   return Object.keys(styles).map(keysToString).join('; ');
 }
-},{}],"templates.js":[function(require,module,exports) {
+},{}],"classes/blocks.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.templates = void 0;
+exports.TitleBlock = exports.TextBlock = exports.ImageBlock = exports.ColumnsBlock = void 0;
 
-var _utils = require("./utils");
+var _utils = require("../utils");
 
-function title(block) {
-  var _block$options = block.options,
-      _block$options$tag = _block$options.tag,
-      tag = _block$options$tag === void 0 ? 'h1' : _block$options$tag,
-      styles = _block$options.styles;
-  return (0, _utils.row)((0, _utils.col)("<".concat(tag, ">").concat(block.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
-}
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
-function text(block) {
-  return (0, _utils.row)((0, _utils.col)("<p>".concat(block.value, "</p>")), (0, _utils.css)(block.options.styles));
-}
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function columns(block) {
-  var html = block.value.map(_utils.col).join('');
-  return (0, _utils.row)(html, (0, _utils.css)(block.options.styles));
-}
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function image(block) {
-  var _block$options2 = block.options,
-      imgStls = _block$options2.imageStyles,
-      styles = _block$options2.styles;
-  return (0, _utils.row)("<img src=\"".concat(block.value, "\" style=\"").concat((0, _utils.css)(imgStls), "\">"), (0, _utils.css)(styles));
-}
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-var templates = {
-  title: title,
-  image: image,
-  text: text,
-  columns: columns
-};
-exports.templates = templates;
-},{"./utils":"utils.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+var Block = /*#__PURE__*/function () {
+  function Block(value, options) {
+    _classCallCheck(this, Block);
+
+    this.value = value;
+    this.options = options;
+  }
+
+  _createClass(Block, [{
+    key: "toHTML",
+    value: function toHTML() {
+      throw new Error('Метод toHTML не реализован!');
+    }
+  }]);
+
+  return Block;
+}();
+
+var TitleBlock = /*#__PURE__*/function (_Block) {
+  _inherits(TitleBlock, _Block);
+
+  var _super = _createSuper(TitleBlock);
+
+  function TitleBlock(value, options) {
+    _classCallCheck(this, TitleBlock);
+
+    return _super.call(this, value, options);
+  }
+
+  _createClass(TitleBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var _this$options = this.options,
+          _this$options$tag = _this$options.tag,
+          tag = _this$options$tag === void 0 ? 'h1' : _this$options$tag,
+          styles = _this$options.styles;
+      return (0, _utils.row)((0, _utils.col)("<".concat(tag, ">").concat(this.value, "</").concat(tag, ">")), (0, _utils.css)(styles));
+    }
+  }]);
+
+  return TitleBlock;
+}(Block);
+
+exports.TitleBlock = TitleBlock;
+
+var ImageBlock = /*#__PURE__*/function (_Block2) {
+  _inherits(ImageBlock, _Block2);
+
+  var _super2 = _createSuper(ImageBlock);
+
+  function ImageBlock(value, options) {
+    _classCallCheck(this, ImageBlock);
+
+    return _super2.call(this, value, options);
+  }
+
+  _createClass(ImageBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var _this$options2 = this.options,
+          imgStls = _this$options2.imageStyles,
+          styles = _this$options2.styles;
+      return (0, _utils.row)("<img src=\"".concat(this.value, "\" style=\"").concat((0, _utils.css)(imgStls), "\">"), (0, _utils.css)(styles));
+    }
+  }]);
+
+  return ImageBlock;
+}(Block);
+
+exports.ImageBlock = ImageBlock;
+
+var ColumnsBlock = /*#__PURE__*/function (_Block3) {
+  _inherits(ColumnsBlock, _Block3);
+
+  var _super3 = _createSuper(ColumnsBlock);
+
+  function ColumnsBlock(value, options) {
+    _classCallCheck(this, ColumnsBlock);
+
+    return _super3.call(this, value, options);
+  }
+
+  _createClass(ColumnsBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      var html = this.value.map(_utils.col).join('');
+      return (0, _utils.row)(html, (0, _utils.css)(this.options.styles));
+    }
+  }]);
+
+  return ColumnsBlock;
+}(Block);
+
+exports.ColumnsBlock = ColumnsBlock;
+
+var TextBlock = /*#__PURE__*/function (_Block4) {
+  _inherits(TextBlock, _Block4);
+
+  var _super4 = _createSuper(TextBlock);
+
+  function TextBlock(value, options) {
+    _classCallCheck(this, TextBlock);
+
+    return _super4.call(this, value, options);
+  }
+
+  _createClass(TextBlock, [{
+    key: "toHTML",
+    value: function toHTML() {
+      return (0, _utils.row)((0, _utils.col)("<p>".concat(this.value, "</p>")), (0, _utils.css)(this.options.styles));
+    }
+  }]);
+
+  return TextBlock;
+}(Block);
+
+exports.TextBlock = TextBlock;
+},{"../utils":"utils.js"}],"model.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.model = void 0;
+
+var _image = _interopRequireDefault(require("./assets/image.png"));
+
+var _blocks = require("./classes/blocks");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var text = "\n\u041A\u0440\u0443\u0442\u044B\u0435 \u0432\u0438\u0434\u0435\u043E \u0438 \u0443\u0440\u043E\u043A\u0438 \u043F\u043E JavaScript \u0442\u0443\u0442: <a href=\"https://youtube.com/c/VladilenMinin\" target=\"_blank\">\u0412\u043B\u0430\u0434\u0438\u043B\u0435\u043D \u041C\u0438\u043D\u0438\u043D</a>. \u0422\u0443\u0442 \u0442\u044B \u043D\u0430\u0439\u0434\u0435\u0448\u044C \u0438\u0441\u0447\u0435\u0440\u043F\u044B\u0432\u0430\u044E\u0449\u0443\u044E \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044E \u043F\u043E \u043B\u044E\u0431\u044B\u043C \u0430\u0441\u043F\u0435\u043A\u0442\u0430\u043C \u044F\u0437\u044B\u043A\u0430, \u043B\u044E\u0431\u044B\u043C \u0444\u0440\u0435\u0439\u043C\u0432\u043E\u0440\u043A\u0430\u043C, \u0442\u0430\u043A\u0438\u0435 \u043A\u0430\u043A: React, Vue, Angular, Node, Svelte, Express, Next, Nuxt \u0438 \u043C\u043D\u043E\u0433\u043E\u0435 \u0434\u0440\u0443\u0433\u043E\u0435. \u041F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u044F\u0439\u0441\u044F!\n";
+var model = [new _blocks.TitleBlock('Конструктор сайтов на JavaScript', {
+  tag: 'h3',
+  styles: {
+    'background-color': '#4d4959',
+    color: '#fff',
+    'text-align': 'center',
+    padding: '1rem'
+  }
+}), new _blocks.ImageBlock(_image.default, {
+  styles: {
+    padding: '2rem 0',
+    display: 'flex',
+    'justify-content': 'center' // margin: '0 auto',
+
+  },
+  imageStyles: {
+    width: '300px',
+    height: 'auto'
+  }
+}), new _blocks.TextBlock(text, {
+  styles: {
+    background: 'linear-gradient(to left, #f2994a, #f2c94c)',
+    padding: '1rem',
+    'font-weight': 'bold'
+  }
+}), new _blocks.ColumnsBlock(['Приложение на чистом JavaScript, без использования библиотек', 'Узнаешь как работают принципы SOLID и ООП в JavaScript за один курс', 'JavaScript - это просто, интересно. Научись создавать любые UI своими руками'], {
+  styles: {
+    background: 'linear-gradient(to bottom, #8e2de2, #4a00e0)',
+    padding: '2rem',
+    color: '#fff',
+    'font-weight': 'bold'
+  }
+})];
+exports.model = model;
+},{"./assets/image.png":"assets/image.png","./classes/blocks":"classes/blocks.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -333,10 +427,9 @@ module.hot.accept(reloadCSS);
 
 var _model = require("./model");
 
-var _templates = require("./templates");
-
 require("./styles/main.css");
 
+// import { templates } from './templates';
 var $site = document.querySelector('#site');
 
 _model.model.forEach(function (block) {
@@ -350,13 +443,11 @@ _model.model.forEach(function (block) {
   // } else if (block.type === 'image') {
   // 	html = image(block);
   // }
-  var toHTML = _templates.templates[block.type];
-
-  if (toHTML) {
-    $site.insertAdjacentHTML('beforeend', toHTML(block));
-  }
+  // const toHTML = templates[block.type];
+  // if (toHTML) {
+  $site.insertAdjacentHTML('beforeend', block.toHTML()); // }
 });
-},{"./model":"model.js","./templates":"templates.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./model":"model.js","./styles/main.css":"styles/main.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -384,7 +475,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54240" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50618" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
