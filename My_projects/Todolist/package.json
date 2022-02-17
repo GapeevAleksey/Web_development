@@ -1,0 +1,21 @@
+{
+	"name": "todolist",
+	"version": "1.0.0",
+	"description": "To Do List by JavaScript",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"serve": "parcel ./src/index.html --open --no-source-maps",
+		"build": "parcel build ./src/index.html --no-source-maps"
+	},
+	"keywords": [
+		"todolist",
+		"js",
+		"javascript"
+	],
+	"author": "Gapeev Aleksei <gapeev@mail.com>",
+	"license": "ISC",
+	"devDependencies": {
+		"parcel-bundler": "^1.12.5"
+	}
+}
